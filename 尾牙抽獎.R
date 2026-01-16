@@ -8,7 +8,7 @@
   repeat {
     digit_2 <- sample(0:9, 1)
     bingo <- digit_2 * 10 + digit_1
-  #不是00桌且小於48桌就回傳 否則重抽
+  #不是00桌且小於等於48桌就回傳 否則重抽
     if (bingo >= 1 && bingo <= n_table) {
       return(bingo)
     }
@@ -19,6 +19,7 @@
 set.seed(19279790)
 results <- replicate(1000000, 尾牙抽獎())
 
+cat("現在加入就送1百萬次尾牙抽獎")
 
 #表格化
 tbl <- table(factor(results, levels = 1:48))
@@ -30,8 +31,8 @@ barplot(
   las = 2,
   col = "grey70",
   border = NA,
-  main = "模擬100萬次抽獎各桌被抽中的次數",
-  ylab = "Probability",
-  xlab = "Table Number"
+  main = "模擬100萬次抽獎，各桌被抽中的次數",
+  ylab = "次數",
+  xlab = "桌號"
 )
 
